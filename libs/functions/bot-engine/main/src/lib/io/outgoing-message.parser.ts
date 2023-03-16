@@ -1,4 +1,4 @@
-import { Message, MessageTemplateConfig, OutgoingMessagePayload } from "@app/model/convs-mgr/conversations/messages";
+import { Message, OutgoingMessagePayload } from "@app/model/convs-mgr/conversations/messages";
 import { StoryBlock, StoryBlockTypes } from "@app/model/convs-mgr/stories/blocks/main";
 
 /**
@@ -21,17 +21,13 @@ export abstract class OutgoingMessageParser
 
   abstract getImageBlockParserOut    (storyBlock: StoryBlock, phone: string): any
 
-  abstract getAudioBlockParserOut    (storyBlock: StoryBlock, phone: string): any
+  // abstract getAudioBlockParserOut    (storyBlock: StoryBlock, phone: string): Message
 
-  abstract getVideoBlockParserOut    (storyBlock: StoryBlock, phone: string): any
-
-  abstract getListBlockParserOut     (storyBlock: StoryBlock, phone: string): any
-
-  abstract getMessageTemplateParserOut (templateConfig: MessageTemplateConfig, phone: string, message: Message): any
+  // abstract getVideoBlockParserOut    (storyBlock: StoryBlock, phone: string): Message
 
   // abstract getStickerBlockParserOut  (storyBlock: StoryBlock, phone: string): Message
 
-  abstract getDocumentBlockParserOut (storyBlock: StoryBlock, phone: string): any
+  // abstract getDocumentBlockParserOut (storyBlock: StoryBlock, phone: string): Message
 
   // abstract getLocationBlockParserOut (storyBlock: StoryBlock, phone: string): Message
 
@@ -56,20 +52,15 @@ export abstract class OutgoingMessageParser
       case StoryBlockTypes.Email:         parser = this.getTextBlockParserOut;     break;
       case StoryBlockTypes.PhoneNumber:   parser = this.getTextBlockParserOut;     break;   
       case StoryBlockTypes.QuestionBlock: parser = this.getQuestionBlockParserOut; break;
-      case StoryBlockTypes.List:          parser = this.getListBlockParserOut;     break;
       case StoryBlockTypes.Image:         parser = this.getImageBlockParserOut;    break;
-      case StoryBlockTypes.Video:         parser = this.getVideoBlockParserOut;    break;
-      case StoryBlockTypes.Document:      parser = this.getDocumentBlockParserOut; break;
-      case StoryBlockTypes.Audio:         parser = this.getAudioBlockParserOut;    break;
+      // case StoryBlockTypes.Document:      parser = this.getDocumentBlockParserOut; break;
+      // case StoryBlockTypes.Audio:         parser = this.getAudioBlockParserOut;    break;
+      // case StoryBlockTypes.Video:         parser = this.getVideoBlockParserOut;    break;
       // case StoryBlockTypes.Sticker:       parser = this.getStickerBlockParserOut;  break;
       default:
           parser = this.getTextBlockParserOut;
     }
 
     return parser(storyBlock, phone);
-  }
-
-  parseOutMessageTemplate(templateConfig: MessageTemplateConfig, phone: string, message: Message) {
-    return this.getMessageTemplateParserOut(templateConfig, phone, message);
   }
 }

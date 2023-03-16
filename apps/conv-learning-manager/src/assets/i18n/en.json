@@ -79,17 +79,14 @@
         "STICKER": "Sticker",
         "LIST": "List",
         "DOCUMENT": "Document",
-        "MULTIPLE-INPUT":"Multiple-Input",
+        "MULTIPLEINPUT":"Multiple-Input",
         "IMAGE-INPUT":"Image Input",
         "OPEN-ENDED-QUESTION": "Open Ended Question",
-        "MULTI-CONTENT-INPUT":"Multi Content Input",
         "VIDEO-INPUT":"Video Input",
         "AUDIO-INPUT":"Audio Input",
         "LOCATION-INPUT":"Location Input",
         "KEYWORD-JUMP": "Keyword Jump",
-        "WEBHOOK": "Webhook",
-        "FAILBLOCK": "Fail Block",
-        "JUMP":"Jump"
+        "WEBHOOK": "Webhook"
       },
       "PLACEHOLDER": {
         "ANCHOR": "Start here",
@@ -108,11 +105,7 @@
         "IMAGE-INPUT": "Image Input",
         "VIDEO-INPUT": "Video Input",
         "AUDIO-INPUT": "Audio Input",
-        "WEBHOOK": "Url Input",
-        "JUMP": {
-          "SELECT-STORY": "Select Story",
-          "SELECT-BLOCK": "Select Block"
-        }
+        "WEBHOOK": "Url Input"
       },
       "BUTTONS": {
         "JUMP-BLOCK": {
@@ -130,7 +123,7 @@
       "DASHBOARD": "Dashboard",
       "ACTIVE-BOTS": "Active Bots",
       "ANALYTICS": "Analytics",
-      "CHATS": "Chats",
+      "CHATS": "WhatsApp",
       "LOG-OUT": "Logout"
     },
     "TOP-BAR": {
@@ -157,12 +150,7 @@
       "EDIT-BOT": "Edit",
       "DELETE-BOT": "Delete",
       "ADD-OPTION": "Add Option",
-      "NEW-LIST": "New List",
-      "IMAGE":"Image",
-      "AUDIO":"Audio",
-      "VIDEO":"Video",
-      "TEXT":"Text",
-      "DOCUMENT":"Document"
+      "NEW-LIST": "New List"
     },
     "FIELDS": {
       "NAME": "Name",

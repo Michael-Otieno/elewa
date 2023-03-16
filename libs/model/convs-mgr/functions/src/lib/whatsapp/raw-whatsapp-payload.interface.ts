@@ -70,27 +70,21 @@ export interface WhatsAppMessagePayLoad extends IncomingMessagePayload
   }
 
   export interface ImagePayload extends WhatsAppMessagePayLoad {
-    image: {
-      mime_type: string;
-      sha256:string;
-      id: string
-    }
+    mime_type: string;
+    sha256:string;
+    id: string
   }
 
   export interface AudioPayload extends WhatsAppMessagePayLoad {
-    audio: {
-      mime_type: string;
-      sha256:string;
-      id: string
-    }
+    mime_type: string;
+    sha256:string;
+    id: string
   }
 
   export interface VideoPayload extends WhatsAppMessagePayLoad {
-    video: {
-      mime_type: string;
-      sha256:string;
-      id: string
-    }
+    mime_type: string;
+    sha256:string;
+    id: string
   }
 
   export interface LocationPayload extends WhatsAppMessagePayLoad {

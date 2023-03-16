@@ -9,7 +9,6 @@ import { WhatsAppMessageType } from "./whatsapp-message-types.interface";
 export interface WhatsAppImageMessage extends WhatsAppOutgoingMessage {
   type: WhatsAppMessageType,
   image: {
-    caption?: string;
     link: string;
   }
 
@@ -25,7 +24,6 @@ export interface WhatsAppAudioMessage extends WhatsAppOutgoingMessage {
 export interface WhatsAppVideoMessage extends WhatsAppOutgoingMessage {
   type: WhatsAppMessageType,
   video: {
-    caption?: string;
     link: string;
   }
 
@@ -41,8 +39,6 @@ export interface WhatsAppStickerMessage extends WhatsAppOutgoingMessage {
 export interface WhatsAppDocumentMessage extends WhatsAppOutgoingMessage {
   type: WhatsAppMessageType,
   document: {
-    filename: string;
-    caption?: string;
     link: string;
   }
 

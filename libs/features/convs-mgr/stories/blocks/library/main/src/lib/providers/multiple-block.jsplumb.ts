@@ -22,8 +22,7 @@ export function _MultipleBlockDecoratePlumb(block: MultipleInputMessageBlock, co
     target: true,
     cssClass: 'block_endpoint',
     endpoint: 'Rectangle',
-    anchor: "Left",
-    maxConnections: -1,
+    anchor: "Left"
   });
   
   return comp;

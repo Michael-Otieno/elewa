@@ -41,8 +41,6 @@ function __ConvertWhatsAppTypeToEngineMessageType(type: WhatsAppMessageType): Me
       return MessageTypes.STICKER;
     case WhatsAppMessageType.VIDEO:
       return MessageTypes.VIDEO;
-    case WhatsAppMessageType.LOCATION:
-      return MessageTypes.LOCATION;
     default:
       break;
   }

@@ -4,7 +4,6 @@ import { BotDataService } from './data-service-abstract.class';
 
 import { Message } from '@app/model/convs-mgr/conversations/messages';
 import { ChatStatus, EndUser } from '@app/model/convs-mgr/conversations/chats';
-import { throws } from 'assert';
 
 /**
  * Contains all the required database flow methods for the chat-status collection
@@ -25,12 +24,12 @@ import { throws } from 'assert';
     this._docPath = `orgs/${orgId}/end-users`;
   }
 
-  async createEndUser(endUserId: string, phoneNumber: string)
+  async createEndUser(endUserId: string, phoneNumber: string, storyId: string)
   {
     const newEndUser: EndUser = {
+      currentStory: storyId,
       phoneNumber,
       status: ChatStatus.Running,
-      id: endUserId,
 
     };
 
@@ -39,18 +38,12 @@ import { throws } from 'assert';
     return endUser;
   }
 
-  async getOrCreateEndUser(endUserId: string, phoneNumber: string)
+  async getEndUser(endUserId: string)
   {
 
-    let endUser = await this.getDocumentById(endUserId, this._docPath);
-
-    if(!endUser) endUser = await this.createEndUser(endUserId, phoneNumber);
+    const endUser = await this.getDocumentById(endUserId, this._docPath);
 
     return endUser;
-  }
-
-  async getEndUser(endUserId: string) {
-    return this.getDocumentById(endUserId, this._docPath);
   }
 
   async updateEndUser(endUser: EndUser)

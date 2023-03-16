@@ -1,7 +1,5 @@
 import { IObject } from '@iote/bricks';
 
-import { MessageTemplateConfig } from '@app/model/convs-mgr/conversations/messages';
-
 import { PlatformType } from './platform-types.enum';
 
 /**
@@ -26,13 +24,6 @@ export interface CommunicationChannel extends IObject
   /** In case this is set, defines the default behaviour of the channel,
    *    in case of new incoming chats. */
   defaultStory?: string;
-
-  /**
-   * Message template configuration for platforms that requires users to 
-   *  send a message to the bot before it can send a message to the user
-   *  e.g. whatsapp
-   */
-  templateConfig?: MessageTemplateConfig;  
 
   /** Platform type of the channel */
   type: PlatformType;

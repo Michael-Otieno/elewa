@@ -4,7 +4,6 @@ import { FormGroup, FormArray, FormBuilder, FormControl } from '@angular/forms';
 import { BrowserJsPlumbInstance } from '@jsplumb/browser-ui';
 
 import { MultipleInputMessageBlock } from '@app/model/convs-mgr/stories/blocks/messaging';
-import { StoryBlockTypes } from '@app/model/convs-mgr/stories/blocks/main';
 
 @Component({
   selector: 'app-multiple-input-block',
@@ -17,8 +16,6 @@ export class MultipleInputBlockComponent implements OnInit, AfterViewInit {
   @Input() block: MultipleInputMessageBlock;
   @Input() multipleInputMessageBlock: FormGroup;
   @Input() jsPlumb: BrowserJsPlumbInstance;
-
-  multipleInputType = StoryBlockTypes.MultipleInput;
 
   constructor(private _fb: FormBuilder) { }
 

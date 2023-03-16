@@ -50,7 +50,7 @@ export class StoryEditorPageComponent implements OnInit, OnDestroy {
 
   zoomLevel: FormControl = new FormControl(100);
   frameElement: HTMLElement;
-  frameZoom = 1;
+  frameZoom: number = 1;
   frameZoomInstance: BrowserJsPlumbInstance;
 
   constructor(private _editorStateService: StoryEditorStateService,

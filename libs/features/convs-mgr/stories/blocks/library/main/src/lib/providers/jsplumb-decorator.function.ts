@@ -9,8 +9,7 @@ import { DocumentMessageBlock, EmailMessageBlock, ImageMessageBlock, LocationMes
           NameMessageBlock, ListMessageBlock, PhoneMessageBlock, QuestionMessageBlock, TextMessageBlock, 
           VideoMessageBlock, VoiceMessageBlock, StickerMessageBlock, ReplyMessageBlock, 
           JumpBlock, MultipleInputMessageBlock,FailBlock, ImageInputBlock, LocationInputBlock, 
-          AudioInputBlock, VideoInputBlock, WebhookBlock, OpenEndedQuestionBlock, KeywordMessageBlock, 
-          MultiContentInputBlock
+          AudioInputBlock, VideoInputBlock, WebhookBlock, OpenEndedQuestionBlock, KeywordMessageBlock 
 } from '@app/model/convs-mgr/stories/blocks/messaging';
 
 import { _MessageBlockDecoratePlumb } from './message-block.jsplumb';
@@ -36,7 +35,6 @@ import { _AudioInputBlockDecoratePlumb } from './audio-input-block.jsplumb';
 import { _VideoInputBlockDecoratePlumb } from './video-input-block.jsplumb';
 import { _WebhookBlockDecoratePlumb } from './webhook-block.jsplumb';
 import { _OpenEndedQuestionBlockDecoratePlumb } from './open-ended-question-block.jsplumb';
-import { _MultiContentInputBlockDecoratePlumb } from './multi-content-input-block.jsplumb';
 import { _KeywordJumpBlockDecoratePlumb } from './keyword-jump-block.jsplumb';
 
 /**
@@ -78,6 +76,7 @@ export function _JsPlumbComponentDecorator(block: StoryBlock, comp: ComponentRef
     case StoryBlockTypes.Video:
       return _VideoBlockDecoratePlumb(block as VideoMessageBlock, comp, jsPlumb);
       break;
+
     case StoryBlockTypes.Sticker:
       return _StickerBlockDecoratePlumb(block as StickerMessageBlock, comp, jsPlumb);
     case StoryBlockTypes.List:
@@ -115,9 +114,6 @@ export function _JsPlumbComponentDecorator(block: StoryBlock, comp: ComponentRef
     case StoryBlockTypes.OpenEndedQuestion:
       return _OpenEndedQuestionBlockDecoratePlumb(block as OpenEndedQuestionBlock, comp, jsPlumb);
       break;
-    case StoryBlockTypes.MultiContentInput:
-      return _MultiContentInputBlockDecoratePlumb(block as MultiContentInputBlock, comp, jsPlumb);
-      break;  
     case StoryBlockTypes.keyword:
       return _KeywordJumpBlockDecoratePlumb(block as KeywordMessageBlock, comp, jsPlumb);
       break;

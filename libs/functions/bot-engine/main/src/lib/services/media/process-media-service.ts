@@ -17,44 +17,43 @@ import { ActiveChannel } from '../../model/active-channel.service';
  */
 export class BotMediaProcessService 
 {
-  private mediaFileURL: string = "";
-
-  constructor(private _tools: HandlerTools) { }
+  constructor(private _tools: HandlerTools){}
 
   /**
    * 
    * Takes the media message, uploads the file, saves the information to the database and returns the firebase storage url
    * 
    */
-  async saveFileInformation(message: Message, endUserId: string, activeChannel: ActiveChannel)
+  async processMediaFile(message: Message, endUserId: string, activeChannel: ActiveChannel)
   {
-    const orgId = activeChannel.channel.orgId;
-
     const mediaFileMessage = message as FileMessage;
+
+    const mediaFileURL = await this._getFileURL(message, endUserId, activeChannel)
 
     const mediaFileInfo: FileUpload = {
       id: mediaFileMessage.mediaId,
-      filePath: this.mediaFileURL,
+      filePath: mediaFileURL as string || null,
       mime_type: mediaFileMessage.mime_type
-    };
-
-    const fileRepo$ = this._tools.getRepository<FileUpload>(`orgs/${orgId}/end-users/${endUserId}/files`);
-
-    await fileRepo$.create(mediaFileInfo, mediaFileInfo.id);
-
-    return this.mediaFileURL;
-  }
-
-  async getFileURL(message: FileMessage, endUserId: string, activeChannel: ActiveChannel)
-  {
-    if(!this.mediaFileURL) {
-      const file = await activeChannel.getMediaFile(message.mediaId, message.mime_type);
-
-      if (file) this.mediaFileURL = await this._uploadFile(endUserId, message.type, file.filePath, file.fileName) as string;
-
     }
 
-    return this.mediaFileURL;
+    await this._saveFileInformation(endUserId, activeChannel.channel.orgId, mediaFileInfo)
+
+    return mediaFileURL
+  }
+
+  private async _getFileURL(message: Message, endUserId: string, activeChannel: ActiveChannel)
+  {
+    const fileMessage = message as FileMessage;
+    const file = await activeChannel.getMediaFile(fileMessage.mediaId, fileMessage.mime_type);
+
+    if (file) return this._uploadFile(endUserId, fileMessage.type, file.filePath, file.fileName);
+  }
+
+  private async _saveFileInformation(endUserId: string, orgId: string, file: FileUpload)
+  {
+    const fileRepo$ = this._tools.getRepository<FileUpload>(`orgs/${orgId}/end-users/${endUserId}/files`);
+    
+    return fileRepo$.create(file, file.id)
   }
 
   /** Uploads the file to firebase storage */
@@ -64,7 +63,7 @@ export class BotMediaProcessService
 
     const platformPrefix = endUserId.split('_')[0];
 
-    const platformType = __PrefixToPlatformType(platformPrefix);
+    const platformType =  __PrefixToPlatformType(platformPrefix);
 
     const path = `${platformType}/messaging/${fileType}s/${endUserId}/${storageFileName}`;
 
@@ -83,8 +82,13 @@ export class BotMediaProcessService
 
       this._tools.Logger.log(() => `${storageFileName} uploaded to /${path}/${storageFileName}.`);
 
-      result[0].makePublic()
-      return result[0].publicUrl()
+      return result[0].getSignedUrl({
+        action: 'read',
+        expires: '03-09-2491'
+      }).then((url) =>
+      {
+        return url[0] as string;
+      }).catch((error) => this._tools.Logger.error(() => `[Upload Service] Encoutered error when getting URL: ${error}`));
     }
     catch (e) {
 

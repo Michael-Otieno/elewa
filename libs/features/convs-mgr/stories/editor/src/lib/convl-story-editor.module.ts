@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PortalModule } from '@angular/cdk/portal';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { FlexLayoutModule, MaterialBricksModule, MaterialDesignModule, MaterialFormBricksModule } from '@iote/bricks-angular';
 import { MultiLangModule } from '@ngfi/multi-lang';
@@ -27,14 +26,22 @@ import { AddBotToChannelModal } from './modals/add-bot-to-channel-modal/add-bot-
 import { ConvlStoryEditorRouterModule } from './convs-story-editor.router.module';
 import { PinchZoomDirective } from './directives/app-pinch-zoom.directive';
 
-
 @NgModule({
   imports: [
-    CommonModule, MultiLangModule, PortalModule,InfiniteScrollModule,
-    MaterialDesignModule, FlexLayoutModule, MaterialBricksModule,
-    MaterialFormBricksModule, FormsModule, ReactiveFormsModule,
-    ConvlPageModule, ConvsMgrAnchorBlockModule,
-    BlocksLibraryModule, StoryEditorStateModule,
+    CommonModule,
+    MultiLangModule,
+    PortalModule,
+    MaterialDesignModule,
+    FlexLayoutModule,
+    MaterialBricksModule,
+    MaterialFormBricksModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ConvlPageModule,
+    ConvsMgrAnchorBlockModule,
+    BlocksLibraryModule,
+    StoryEditorStateModule,
+    CommonModule,
     ConvlStoryEditorRouterModule,
   ],
 

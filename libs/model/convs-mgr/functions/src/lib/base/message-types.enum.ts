@@ -17,15 +17,3 @@ export enum MessageTypes
   STICKER           = 'sticker',
   VIDEO             = 'video'
 }
-
-export function isFileMessage(messageType: MessageTypes): boolean {
-  switch (messageType) {
-    case MessageTypes.IMAGE:
-    case MessageTypes.AUDIO:
-    case MessageTypes.VIDEO:
-    case MessageTypes.DOCUMENT:
-      return true;
-    default:
-      return false;
-}
-}

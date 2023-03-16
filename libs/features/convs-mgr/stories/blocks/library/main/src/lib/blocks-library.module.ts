@@ -35,7 +35,6 @@ import { ConvsMgrStoriesWebhookBlockModule } from '@app/features/convs-mgr/stori
 
 import { ConvsMgrAnchorBlockModule } from '@app/features/convs-mgr/stories/blocks/library/anchor-block';
 import { ConvsMgrOpenEndedQuestionBlockModule } from '@app/features/convs-mgr/stories/blocks/library/open-ended-question-block';
-import { ConvsMgrMultiContentInputBlockModule } from '@app/features/convs-mgr/stories/blocks/library/multi-content-input-block';
 
 import { ConvsMgrVideoInputBlockModule } from '@app/features/convs-mgr/stories/blocks/library/video-input-block';
 import { ConvsMgrKeywordJumpBlockModule } from '@app/features/convs-mgr/stories/blocks/library/keyword-jump-block';
@@ -79,7 +78,6 @@ import { BlockComponent } from './components/block/block.component';
     ConvsMgrImageInputBlockModule,
     ConvsMgrAudioInputBlockModule,
     ConvsMgrStoriesWebhookBlockModule,
-    ConvsMgrMultiContentInputBlockModule,
 
     ConvsMgrAnchorBlockModule,
     ConvsMgrVideoInputBlockModule,

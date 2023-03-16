@@ -7,5 +7,3 @@ export * from './lib/event-category-types.enum';
 
 export * from './lib/channel.interface';
 export * from './lib/platform-channels/whatsapp-channel.interface';
-
-export * from './lib/routed-cursor.interface';
